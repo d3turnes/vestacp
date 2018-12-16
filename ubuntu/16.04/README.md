@@ -2,9 +2,8 @@
 
 ### Pasos previos a la instalación
 
-Si queremos que nuestro FQDN hostname sea accedido mediante https://panel.midominio.com:8083 deberemos registrar en la zona dns de nuestro dominio (freenom.com, namecheap.com, dondominio.com, ...) los siguientes dos registros 
+Si queremos que nuestro FQDN hostname sea accedido mediante https://midominio.com:8083 con un certificado SSL válido y no autofirmado, deberemos registrar en la zona dns de nuestro dominio (freenom.com, namecheap.com, dondominio.com, ...) los siguientes dos registros 
 
-- A	panel.midominio.com(sin www)	ip-del-vps
 - A midominio.com ip-del-vps
 - A ww<i></i>w.midominio.com ip-del-vps (opcional)
 
@@ -24,13 +23,13 @@ El script comienza actualizando el/los repositorio(s) y posteriormente las aplic
 
 - Would yo like yo continue [y/n]: ***y***
 - Please enter admin email addres(direccion de email para el usaurio admin): ***miemail<i></i>@gmail.com***
-- Please enter FQDN hostname [vps6xxxx.ovh.net]: ***panel<i></i>.midominio.com***
+- Please enter FQDN hostname [vps6xxxx.ovh.net]: ***mido<i></i>minio.com***
 
 El proceso de instalación tomara sobre unos 15 minutos.
 
 Una vez concluida la instalación nos habrá creado por defecto el usuario admin (con privilegios de administrador) y un sitio web (panel.midominio.com), además de enviarnos un email con las credenciales de acceso para poder entrar.
 
-Al acceder por vez primera a https://panel.midominio.com:8083 el sistema nos advierte que se trata de una conexión no segura, aceptamos y entramos.
+Al acceder por vez primera a https://midominio.com:8083 el sistema nos advierte que se trata de una conexión no segura, aceptamos y entramos.
 
 ### Generar un certificado válido para el FQDN - ( PASO 2 )
 
