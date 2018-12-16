@@ -2,7 +2,7 @@
 
 ### Pasos previos a la instalación
 
-Si queremos que nuestro FQDN hostname sea accedido mediante https://midominio.com:8083 con un certificado SSL válido y no autofirmado, deberemos registrar en la zona dns de nuestro dominio (freenom.com, namecheap.com, dondominio.com, ...) los siguientes dos registros 
+Si queremos que nuestro FQDN hostname sea accedido mediante https://midominio.com:8083 con un certificado SSL válido y no autofirmado, deberemos registrar en la zona dns de nuestro dominio (freenom, namecheap, dondominio, ...) los siguientes dos registros 
 
 - A midominio.com ip-del-vps
 - A ww<i></i>w.midominio.com ip-del-vps (opcional)
