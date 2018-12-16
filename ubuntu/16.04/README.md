@@ -183,7 +183,7 @@ Para volver de la versión php7.2 a php7.0 ejecute:
 - ***a2enmod php7.0***
 - ***service apache2 restart***
 
-No olvide cambiar la terminal (cli) de php version (7.2 to 7.0):
+No olvide cambiar la terminal (cli) de php (7.2 to 7.0):
 
 ***sudo update-alternatives --set php /usr/bin/php7.0***
 
