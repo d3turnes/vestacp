@@ -153,7 +153,7 @@ Una vez activado, reinicie el servicio apache2:
 
 ***\# service apache2 restart***
 
-Instalando PHP 7.2
+Instalando PHP 7.2 ( recuerde actualizar pma a la última versión )
 
 Añadimos o eliminamos los paquetes que necesitemos (dejen sólo los paquetes que necesiten)
 
