@@ -109,7 +109,7 @@ Si al ejecutar el comando anterior obtenos un "dpkg error"
 
 Ahora volvemos a lanzar las actualizaciones de vesta
 
-***\# v-update-sys-vesta-all***
+***\# sudo /usr/local/vesta/bin/v-update-sys-vesta-all***
 
 ---
 
