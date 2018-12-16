@@ -117,7 +117,7 @@ Ahora volvemos a lanzar las actualizaciones de vesta
 
 Antes de proceder a la instalación deberemos tener instalado el "software-properties-common", para ello ejecutamos el siguiente comando.
 
-***\# sudo apt-get install software-properties-common***
+***\# sudo apt-get install software-properties-common python-software-properties***
 
 ***Para Apache mod_php :***
 
