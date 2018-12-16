@@ -186,6 +186,7 @@ Para volver de la versión php7.2 a php7.0 ejecute:
 No ovlive cambiar la version cli de php, para ello ejecute:
 
 // change terminal (cli) version (7.2 to 7.0)
+
 ***sudo update-alternatives --set php /usr/bin/php7.0***
 
 [Para más información](https://www.mysterydata.com/how-to-upgrade-php-7-0-to-php-7-1-or-php-7-2-on-ubuntu-vestacp/).
