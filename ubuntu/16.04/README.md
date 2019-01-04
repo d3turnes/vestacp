@@ -67,7 +67,7 @@ Llegado a este punto tendremos en nuestro VPS instalado:
 - ***MySQl:*** 5.7.24
 - ***PhpMyAdmin:*** 4.5.4.1
 
-### Solución al error, Fix Exim SMTP error: Helo with invalid local IP
+### Solución al error, Fix Exim SMTP error: Helo with invalid local IP ( PASO 5 )
 
 Este error ocurre al intenetar enviar un email desde un cliente de correo ( thunderbird, outlook, ...) vía smtp, debido a que Exim rechaza cualquier envío procedente de una ip local.
 
@@ -77,34 +77,35 @@ La solución paso por desactivar dicha comprobación en el fichero exim.conf
 
 ***# nano /etc/exim/exim.conf*** (editamos el fichero)
 
-***acl_check_mail:***
+acl_check_mail:
 
-deny condition = $ {if eq {$ sender_helo_name} {}}
-message = HELO required before MAIL
+- deny condition = $ {if eq {$ sender_helo_name} {}}
+- message = HELO required before MAIL
 
-drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
-condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
-condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
-delay = 45s
+- drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
+- condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
+- condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
+- delay = 45s
 
-drop condition = $ {if isip {$ sender_helo_name}}
-message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
+- drop condition = $ {if isip {$ sender_helo_name}}
+- message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
+
 ....
  
 y lo comentamos
 
 acl_check_mail:
 
-\# deny condition = $ {if eq {$ sender_helo_name} {}}
-\# message = HELO required before MAIL
+- \# deny condition = $ {if eq {$ sender_helo_name} {}}
+- \# message = HELO required before MAIL
 
-\# drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
-\# condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
-\# condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
-\# delay = 45s
+- \# drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
+- \# condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
+- \# condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
+- \# delay = 45s
 
-\# drop condition = $ {if isip {$ sender_helo_name}}
-\# message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
+- \# drop condition = $ {if isip {$ sender_helo_name}}
+- \# message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
 
 ...
 
@@ -114,7 +115,7 @@ acl_check_mail:
 
 ---
 
-### Actualizar a la última versión de PhpMyAdmin en ubuntu 16.04.5 LTS (Opcional) - ( PASO 5 )
+### Actualizar a la última versión de PhpMyAdmin en ubuntu 16.04.5 LTS (Opcional) - ( PASO 6 )
 
 Los pasos a seguir son:
 
