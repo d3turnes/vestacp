@@ -73,7 +73,7 @@ Este error ocurre al intenetar enviar un email desde un cliente de correo ( thun
 
 La solución paso por desactivar dicha comprobación en el fichero exim.conf
 
-***# cp /etc/exim/exim.conf /etc/exim/exim.conf.bak*** (realizamos una copia de seguridad)
+***# cp /etc/exim4/exim4.conf.template /etc/exim4/exim4.conf.template.bak*** (realizamos una copia de seguridad)
 
 ***# nano /etc/exim/exim.conf*** (editamos el fichero)
 
