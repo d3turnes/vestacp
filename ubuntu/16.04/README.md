@@ -33,7 +33,7 @@ Al acceder por vez primera a https://midominio.com:8083 el sistema nos advierte 
 
 ### Generar un certificado válido para el FQDN - ( PASO 2 )
 
-Iniciamos sesión como admin, ir a web(panel.midominio.com), editar (dejar en blanco el campo alias) y marcar Soportar SSL y Soportar Lets Encrypt. Por último presionamos en guardar y ejecutamos el siguiente script desde la consola.
+Iniciamos sesión como admin, ir a web(midominio.com), editar (dejar en blanco el campo alias) y marcar Soportar SSL y Soportar Lets Encrypt. Por último presionamos en guardar y ejecutamos el siguiente script desde la consola.
 
 ***\# bash instalar-ssl-vestacp.sh***
 
@@ -66,6 +66,51 @@ Llegado a este punto tendremos en nuestro VPS instalado:
 - ***PHP:***  7.0.32
 - ***MySQl:*** 5.7.24
 - ***PhpMyAdmin:*** 4.5.4.1
+
+# Solución al error, Fix Exim SMTP error: Helo with invalid local IP
+
+Este error ocurre al intenetar enviar un email desde un cliente de correo ( thunderbird, outlook, ...) vía smtp, debido a que Exim rechaza cualquier envío procedente de una ip local.
+
+La solución paso por desactivar dicha comprobación en el fichero exim.conf
+
+***# cp /etc/exim/exim.conf /etc/exim/exim.conf.bak*** (realizamos una copia de seguridad)
+
+***# nano /etc/exim/exim.conf*** (editamos el fichero)
+
+***acl_check_mail:***
+
+deny condition = $ {if eq {$ sender_helo_name} {}}
+message = HELO required before MAIL
+
+drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
+condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
+condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
+delay = 45s
+
+drop condition = $ {if isip {$ sender_helo_name}}
+message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
+....
+ 
+y lo comentamos
+
+acl_check_mail:
+
+# deny condition = $ {if eq {$ sender_helo_name} {}}
+# message = HELO required before MAIL
+
+# drop message = Helo name contains a ip address (HELO was $ sender_helo_name) and not valid
+# condition = $ {if match {$ sender_helo_name} {\ N ((\ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3} [.-] \ d {1,3}) | ([0-9a-f] {8}) | ([0-9A-F] {8})) \ N} {yes} {no}}
+# condition = $ {if match {$ {lookup dnsdb {>: defer_never, ptr = $ sender_host_address}} \} {$ sender_helo_name} {no} {yes}}
+# delay = 45s
+
+# drop condition = $ {if isip {$ sender_helo_name}}
+# message = Access denied - Invalid HELO name (See RFC2821 4.1.3)
+
+...
+
+[Para más información](http://targetveb.com/fix-exim-smtp-error-helo-invalid-local-ip.html).
+
+***# service exim restart*** (reiniciamos exim para aplicar cambios)
 
 ---
 
