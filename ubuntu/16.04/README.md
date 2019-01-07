@@ -151,6 +151,10 @@ Con todo esto ya tendremos actualizado phpMyAdmin a la versión 4.6.6, si volvem
 
 Si lo prefieres puedes ejecutar directamente el script desde la consola, éste ejecutará todos los pasas anteriores y generará una clave aleatoria de 40 carcateres por nosotros.
 
+***Nota: The only major problem is that 4.6.6 doesn't work properly with PHP 7.2.*** 
+
+Recuerda que la version 4.6.6 no es compatible con php7.2
+
 ***\# bash actualizar-pma-4.6.6.sh***
 
 ### How to solve the Error: vesta update failed
