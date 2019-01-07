@@ -248,3 +248,26 @@ No olvide cambiar la terminal (cli) de php (7.2 to 7.0):
 ***sudo update-alternatives --set php /usr/bin/php7.0***
 
 [Para más información](https://www.mysterydata.com/how-to-upgrade-php-7-0-to-php-7-1-or-php-7-2-on-ubuntu-vestacp/).
+
+---
+
+### Solucionar \"Roundcube HTTP ERROR 500\" en ubuntu 16.04.5 LTS - ( PASO 7 )
+
+El problema ocurre al pasar de la version 7.0 a 7.1 de PHP.
+
+Comprobamos el fichero log para comprobar el error que nos arroja.
+
+nano /var/log/apache2/domains/mi-dominio.com.log
+
+***PHP Fatal error:***  Uncaught Error: Class 'Net_IDNA2' not found in /usr/share/roundcube/program/lib/Roundcube/bootstrap.php:407\
+
+Para solucionar el problea bastará con instalar el paquete Net_IDNA2 mediante Pear.
+
+***Solución:***
+
+This was easily resolved by installing package php-net-idna2. Hence, in my opionion, this should have been a dependency to the roundcube package.
+
+- Tener previamente instalado pear
+- Ejecutar ***pear install Net_IDNA2-0.2.0*** (instala la dependencia requerida)
+
+
