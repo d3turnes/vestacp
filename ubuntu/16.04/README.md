@@ -181,7 +181,7 @@ Antes de proceder a la instalación deberemos tener instalado el "software-prope
 
 ***Para Apache mod_php :***
 
-***Actualizando de PHP 7.0 a PHP 7.1:***
+***Actualizando de PHP 7.0 a PHP 7.1 (recomendada):***
 
 Añadimos Ondrejs PPA a nuestro repositorio y seguidamente hacemos un update del mismo :
 
@@ -197,7 +197,7 @@ Si obtenemos el siguiente error "‘ascii’ codec can’t decode byte" ejecute 
 
 ***\# sudo apt-get update***
 
-Instalando PHP 7.1
+Instalando PHP 7.1 (Recomendada)
 
 Añadimos o eliminamos los paquetes que necesitemos (dejen sólo los paquetes que necesiten)
 
@@ -213,7 +213,7 @@ Una vez activado, reinicie el servicio apache2:
 
 ***\# service apache2 restart***
 
-Instalando PHP 7.2 ( recuerde actualizar pma a la última versión )
+Instalando PHP 7.2 ( recuerde actualizar pma a la última versión, ya que la version 4.6.6 de pma no es compatible con PHP7.2 )
 
 Añadimos o eliminamos los paquetes que necesitemos (dejen sólo los paquetes que necesiten)
 
