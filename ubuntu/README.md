@@ -26,4 +26,4 @@ Añadimos el repositorio de node
 
 Instalamos nodejs
 
-***\# sudo apt-get install nodejs***
+***\# sudo apt-get install -y nodejs***
